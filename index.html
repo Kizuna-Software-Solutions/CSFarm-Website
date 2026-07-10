@@ -149,80 +149,83 @@
   .method-card p{color:var(--muted);font-size:14px;line-height:1.85;}
   @media(max-width:760px){.method-grid{grid-template-columns:1fr;}}
 
-  /* ---------- LIFECYCLE INFOGRAPHIC (growth pipeline) ---------- */
-  .lifecycle-wrap{margin-top:64px;text-align:center;}
-  .lifecycle-caption{max-width:520px;margin:0 auto 30px;}
+  /* ---------- LIFECYCLE INFOGRAPHIC (horizontal AI flow) ---------- */
+  .lifecycle-wrap{margin-top:64px;}
+  .lifecycle-caption{max-width:520px;margin:0 auto 30px;text-align:center;}
   .lifecycle-eyebrow{display:block;font-size:12px;color:var(--accent);letter-spacing:2px;margin-bottom:12px;}
   .lifecycle-caption p{color:var(--muted);font-size:14px;}
-  .lifecycle-svg{width:100%;max-width:720px;height:auto;animation:diagram-float 9s cubic-bezier(.45,0,.55,1) infinite;}
-  @keyframes diagram-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
-  .vine{fill:none;stroke:#6FE868;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1 10;opacity:0.75;animation:vine-flow 4s linear infinite;}
-  @keyframes vine-flow{to{stroke-dashoffset:-44;}}
-
-  .pulse-dot{fill:#8FF089;filter:drop-shadow(0 0 6px rgba(111,232,104,0.9));}
-
-  .node-group{transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.34,1.56,.64,1);cursor:pointer;}
-  .node-group:hover{transform:scale(1.1);}
-  .node-halo{fill:#6FE868;opacity:0;filter:blur(10px);animation:halo-pulse 4.4s cubic-bezier(.45,0,.55,1) infinite;}
-  .node-circle{fill:#111729;stroke:#2A3252;stroke-width:2;animation:node-glow 4.4s cubic-bezier(.45,0,.55,1) infinite;transition:stroke .3s;}
-  .node-group:hover .node-circle{stroke:#6FE868;}
-  .node-num{fill:#EDEFF5;font-family:'Space Grotesk';font-size:18px;font-weight:700;}
-  .node-circle.s0, .node-halo.s0{animation-delay:0s;}
-  .node-circle.s1, .node-halo.s1{animation-delay:0.9s;}
-  .node-circle.s2, .node-halo.s2{animation-delay:1.8s;}
-  .node-circle.s3, .node-halo.s3{animation-delay:2.7s;}
-  .node-circle.s4, .node-halo.s4{animation-delay:3.6s;}
-  @keyframes node-glow{
-    0%,58%,100%{stroke:#2A3252;filter:none;}
-    24%{stroke:#6FE868;filter:drop-shadow(0 0 9px rgba(111,232,104,0.65));}
+  .flow-horizontal{
+    overflow-x:auto;padding:44px 4px 20px;-webkit-overflow-scrolling:touch;
+    width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+    scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-panel);
   }
-  @keyframes halo-pulse{
-    0%,58%,100%{opacity:0;}
-    24%{opacity:0.4;}
+  .flow-horizontal::-webkit-scrollbar{height:6px;}
+  .flow-horizontal::-webkit-scrollbar-track{background:var(--bg-panel);border-radius:10px;}
+  .flow-horizontal::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px;}
+  .flow-horizontal::-webkit-scrollbar-thumb:hover{background:#8FF089;}
+  .flow-track{display:flex;position:relative;max-width:1360px;min-width:0;margin:0 auto;padding:0 24px;}
+  .flow-h-line{position:absolute;left:47px;right:47px;top:20px;height:2px;background:var(--line);}
+  .flow-h-line::after{
+    content:'';position:absolute;top:-4px;width:10px;height:10px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 10px 3px rgba(111,232,104,0.7);
+    animation:flow-particle-h 8s linear infinite;
   }
-
-  .hub-aura{fill:#6FE868;opacity:0.18;filter:blur(13px);transform-box:fill-box;transform-origin:center;animation:hub-aura-pulse 4.4s cubic-bezier(.45,0,.55,1) infinite;}
-  @keyframes hub-aura-pulse{0%,100%{transform:scale(1);opacity:0.14;}50%{transform:scale(1.3);opacity:0.3;}}
-  .hub{fill:#1B2A4A;stroke:#6FE868;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:hub-pulse 4.4s cubic-bezier(.45,0,.55,1) infinite;}
-  @keyframes hub-pulse{
-    0%,100%{transform:scale(1);filter:drop-shadow(0 0 6px rgba(111,232,104,0.35));}
-    50%{transform:scale(1.1);filter:drop-shadow(0 0 16px rgba(111,232,104,0.6));}
+  @keyframes flow-particle-h{
+    0%{left:0%;opacity:0;}
+    5%{opacity:1;}
+    95%{opacity:1;}
+    100%{left:100%;opacity:0;}
   }
-  .hub-label{fill:#6FE868;font-family:'Space Grotesk';font-size:15px;font-weight:700;}
-  .review-badge{fill:#161D33;stroke:#C9A46B;stroke-width:2;}
-  .review-check{stroke:#C9A46B;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-  .review-badge-group{opacity:0;transform-box:fill-box;transform-origin:center;animation:badge-in 4.4s cubic-bezier(.34,1.56,.64,1) infinite;}
-  .review-badge-group.b0{animation-delay:0.6s;}
-  .review-badge-group.b1{animation-delay:1.5s;}
-  .review-badge-group.b2{animation-delay:2.4s;}
-  .review-badge-group.b3{animation-delay:3.3s;}
-  .review-badge-group.b4{animation-delay:4.2s;}
-  @keyframes badge-in{
-    0%{opacity:0;transform:scale(0.4);}
-    8%{opacity:1;transform:scale(1.15);}
-    14%{transform:scale(1);}
-    54%{opacity:1;transform:scale(1);}
-    66%,100%{opacity:0;transform:scale(0.85);}
+  .flow-h-step{flex:1;min-width:88px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px;position:relative;}
+  .flow-h-marker{
+    width:40px;height:40px;border-radius:50%;background:var(--bg-panel);
+    border:2px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono';font-size:12px;color:var(--muted);position:relative;z-index:1;
+    margin-bottom:12px;transition:border-color .3s,color .3s,transform .3s;
   }
+  .flow-h-step:hover .flow-h-marker{border-color:var(--muted);color:var(--text);transform:scale(1.08);}
+  .flow-h-marker.ai{border-color:var(--accent);color:var(--accent);}
+  .flow-h-marker.human{border-color:var(--gold);color:var(--gold);}
+  .flow-h-marker.both{border:2px solid;border-image:linear-gradient(135deg, var(--accent), var(--gold)) 1;color:var(--text);}
+  .flow-h-label{font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.4;min-height:34px;}
+  .flow-h-tag{
+    display:inline-block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.5px;
+    padding:3px 9px;border-radius:10px;
+  }
+  .flow-h-tag.ai{color:var(--accent);border:1px solid rgba(111,232,104,0.4);}
+  .flow-h-tag.human{color:var(--gold);border:1px solid rgba(201,164,107,0.4);}
+  .flow-h-tag.both{
+    border:1px solid var(--muted);
+    background:linear-gradient(90deg, var(--accent), var(--gold));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  @media(max-width:820px){.flow-track{min-width:920px;}}
 
-  .pipeline-labels{display:flex;justify-content:space-between;max-width:680px;margin:8px auto 0;gap:6px;}
-  .pl-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
-  .pl-num{font-family:'JetBrains Mono';font-size:11px;color:var(--gold);}
-  .pl-item span:last-child{font-size:13px;color:var(--text);font-weight:500;}
-  @media(max-width:640px){.pipeline-labels{flex-wrap:wrap;}.pl-item{flex:0 0 33%;}}
-
-  .lifecycle-legend{display:flex;justify-content:center;gap:28px;margin-top:30px;flex-wrap:wrap;}
+  .lifecycle-legend{display:flex;justify-content:center;gap:24px;margin-top:32px;flex-wrap:wrap;}
   .legend-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);}
   .legend-dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
   .legend-dot.legend-ai{background:#6FE868;}
   .legend-dot.legend-human{background:#161D33;border:2px solid #C9A46B;box-sizing:border-box;}
+  .legend-dot.legend-both{background:linear-gradient(135deg, #6FE868, #C9A46B);}
   @media(prefers-reduced-motion: reduce){
-    .lifecycle-svg,.node-circle,.node-halo,.hub,.hub-aura,.review-badge-group,.vine{animation:none;}
-    .node-circle{stroke:#6FE868;}
-    .review-badge-group{opacity:1;}
-    .pulse-dot{display:none;}
+    .flow-h-line::after{animation:none;opacity:0;}
   }
+
+  /* ---------- WHY CS FARM ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  @media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{
+    background:var(--bg-panel);border:1px solid var(--line);padding:30px 26px;border-radius:3px;
+    transition:border-color .25s,transform .3s;
+  }
+  .why-card:hover{border-color:rgba(111,232,104,0.4);transform:translateY(-4px);}
+  .why-icon{font-size:28px;margin-bottom:16px;}
+  .why-card h3{font-size:16px;font-weight:700;margin-bottom:14px;}
+  .why-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .why-card li{font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;}
+  .why-card li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent);}
 
   /* ---------- SERVICES ---------- */
   .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
@@ -271,11 +274,23 @@
   .case-card p{font-size:13.5px;color:var(--muted);}
 
   /* ---------- TECH ---------- */
-  .tech-strip{display:flex;flex-wrap:wrap;gap:14px;}
+  .tech-groups{display:grid;grid-template-columns:repeat(3,1fr);column-gap:40px;row-gap:36px;}
+  .tech-group{}
+  @media(max-width:800px){.tech-groups{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:500px){.tech-groups{grid-template-columns:1fr;}}
+  .tech-group-title{
+    font-family:'Space Grotesk';font-weight:700;font-size:14px;color:var(--text);
+    letter-spacing:0.5px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line);
+  }
+  .tech-group-title-ai{color:var(--accent);border-bottom-color:rgba(111,232,104,0.3);}
+  .tech-strip{display:flex;flex-wrap:wrap;gap:10px;}
   .tech-chip{
     font-family:'JetBrains Mono';font-size:13px;color:var(--muted);
-    border:1px solid var(--line);padding:9px 16px;border-radius:20px;
+    border:1px solid var(--line);padding:8px 14px;border-radius:20px;transition:border-color .25s,color .25s;
   }
+  .tech-chip:hover{border-color:var(--muted);color:var(--text);}
+  .tech-chip-ai{border-color:rgba(111,232,104,0.35);color:var(--accent);}
+  .tech-chip-ai:hover{border-color:var(--accent);}
 
   /* ---------- SECURITY / QA ---------- */
   .qa-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:40px;row-gap:30px;}
@@ -364,8 +379,8 @@
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow">AI DRIVEN DEVELOPMENT</div>
-      <h1 class="hero-head" data-i18n="hero_title">AIと共に、<em>育てる</em>開発。<br>種から、収穫まで。</h1>
-      <p class="hero-sub" data-i18n="hero_sub">CS Farmは、要件という種を蒔き、AIとの協働で日々育て、収穫まで伴走する開発チームです。反復のたびに、機能はより実用的に、コードはより強く育ちます。</p>
+      <h1 class="hero-head" data-i18n="hero_title">AI駆動開発で、開発速度と品質を<em>両立</em>。</h1>
+      <p class="hero-sub" data-i18n="hero_sub">人とAIが協働し、要件定義から運用まで伴走します。</p>
       <div class="cta-row">
         <a href="#contact" class="btn-primary" data-i18n="cta_primary_1">まずはご相談ください</a>
         <a href="#method" class="btn-ghost" data-i18n="cta_ghost">CS Farmの仕組みを見る</a>
@@ -420,82 +435,114 @@
 
     <div class="lifecycle-wrap reveal">
       <div class="lifecycle-caption">
-        <span class="mono lifecycle-eyebrow">HOW AI FLOWS THROUGH THE LIFECYCLE</span>
-        <p data-i18n="lifecycle_desc">AIは一工程だけを担うのではなく、要件定義からリリースまで開発ライフサイクル全体に継続的に伴走します。</p>
+        <span class="mono lifecycle-eyebrow">AI FLOW LIFECYCLE</span>
+        <p data-i18n="lifecycle_desc">AIは一工程だけを担うのではなく、要件定義からリリース後の改善まで開発ライフサイクル全体に継続的に伴走します。</p>
       </div>
-      <svg class="lifecycle-svg" viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AIが開発ライフサイクル全体に伴走する様子を示す図">
-        <path class="vine" d="M40,120 C95,120 95,70 150,70 C215,70 215,160 280,160 C345,160 345,70 410,70 C475,70 475,160 540,160 C600,160 600,100 660,100"/>
+      <div class="flow-horizontal">
+        <div class="flow-track">
+          <div class="flow-h-line"></div>
 
-        <circle class="pulse-dot" r="4">
-          <animateMotion dur="4s" repeatCount="indefinite" begin="0s" path="M40,120 C95,120 95,70 150,70"/>
-          <animate attributeName="r" values="3;6;3" dur="4s" repeatCount="indefinite" begin="0s"/>
-        </circle>
-        <circle class="pulse-dot" r="4">
-          <animateMotion dur="4s" repeatCount="indefinite" begin="0.8s" path="M150,70 C215,70 215,160 280,160"/>
-          <animate attributeName="r" values="3;6;3" dur="4s" repeatCount="indefinite" begin="0.8s"/>
-        </circle>
-        <circle class="pulse-dot" r="4">
-          <animateMotion dur="4s" repeatCount="indefinite" begin="1.6s" path="M280,160 C345,160 345,70 410,70"/>
-          <animate attributeName="r" values="3;6;3" dur="4s" repeatCount="indefinite" begin="1.6s"/>
-        </circle>
-        <circle class="pulse-dot" r="4">
-          <animateMotion dur="4s" repeatCount="indefinite" begin="2.4s" path="M410,70 C475,70 475,160 540,160"/>
-          <animate attributeName="r" values="3;6;3" dur="4s" repeatCount="indefinite" begin="2.4s"/>
-        </circle>
-        <circle class="pulse-dot" r="4">
-          <animateMotion dur="4s" repeatCount="indefinite" begin="3.2s" path="M540,160 C600,160 600,100 660,100"/>
-          <animate attributeName="r" values="3;6;3" dur="4s" repeatCount="indefinite" begin="3.2s"/>
-        </circle>
-
-        <circle class="hub-aura" cx="40" cy="120" r="38"/>
-        <circle class="hub" cx="40" cy="120" r="26"/>
-        <text class="hub-label" x="40" y="125" text-anchor="middle">AI</text>
-
-        <g class="node-group">
-          <circle class="node-halo s0" cx="150" cy="70" r="32"/>
-          <circle class="node-circle s0" cx="150" cy="70" r="32"/>
-          <text class="node-num" x="150" y="76" text-anchor="middle">01</text>
-          <g class="review-badge-group b0"><circle class="review-badge" cx="174" cy="46" r="12"/><path class="review-check" d="M169,46 L173,50 L181,41"/></g>
-        </g>
-
-        <g class="node-group">
-          <circle class="node-halo s1" cx="280" cy="160" r="32"/>
-          <circle class="node-circle s1" cx="280" cy="160" r="32"/>
-          <text class="node-num" x="280" y="166" text-anchor="middle">02</text>
-          <g class="review-badge-group b1"><circle class="review-badge" cx="304" cy="136" r="12"/><path class="review-check" d="M299,136 L303,140 L311,131"/></g>
-        </g>
-
-        <g class="node-group">
-          <circle class="node-halo s2" cx="410" cy="70" r="32"/>
-          <circle class="node-circle s2" cx="410" cy="70" r="32"/>
-          <text class="node-num" x="410" y="76" text-anchor="middle">03</text>
-          <g class="review-badge-group b2"><circle class="review-badge" cx="434" cy="46" r="12"/><path class="review-check" d="M429,46 L433,50 L441,41"/></g>
-        </g>
-
-        <g class="node-group">
-          <circle class="node-halo s3" cx="540" cy="160" r="32"/>
-          <circle class="node-circle s3" cx="540" cy="160" r="32"/>
-          <text class="node-num" x="540" y="166" text-anchor="middle">04</text>
-          <g class="review-badge-group b3"><circle class="review-badge" cx="564" cy="136" r="12"/><path class="review-check" d="M559,136 L563,140 L571,131"/></g>
-        </g>
-
-        <g class="node-group">
-          <circle class="node-halo s4" cx="660" cy="100" r="32"/>
-          <circle class="node-circle s4" cx="660" cy="100" r="32"/>
-          <text class="node-num" x="660" y="106" text-anchor="middle">05</text>
-          <g class="review-badge-group b4"><circle class="review-badge" cx="684" cy="76" r="12"/><path class="review-check" d="M679,76 L683,80 L691,71"/></g>
-        </g>
-      </svg>
-      <div class="pipeline-labels">
-        <div class="pl-item"><span class="pl-num">01</span><span data-i18n="node_req">要件定義</span></div>
-        <div class="pl-item"><span class="pl-num">02</span><span data-i18n="node_design">設計</span></div>
-        <div class="pl-item"><span class="pl-num">03</span><span data-i18n="node_impl">実装</span></div>
-        <div class="pl-item"><span class="pl-num">04</span><span data-i18n="node_test">検証</span></div>
-        <div class="pl-item"><span class="pl-num">05</span><span data-i18n="node_release">リリース</span></div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker human">01</div>
+            <div class="flow-h-label" data-i18n="flow1">要件定義</div>
+            <span class="flow-h-tag human" data-i18n="tag_human">HUMAN</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker ai">02</div>
+            <div class="flow-h-label" data-i18n="flow2">AI分析</div>
+            <span class="flow-h-tag ai" data-i18n="tag_ai">AI</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker both">03</div>
+            <div class="flow-h-label" data-i18n="flow3">アーキテクチャ設計</div>
+            <span class="flow-h-tag both" data-i18n="tag_both">AI-H</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker ai">04</div>
+            <div class="flow-h-label" data-i18n="flow4">AIコード生成</div>
+            <span class="flow-h-tag ai" data-i18n="tag_ai">AI</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker human">05</div>
+            <div class="flow-h-label" data-i18n="flow5">人によるレビュー</div>
+            <span class="flow-h-tag human" data-i18n="tag_human">HUMAN</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker ai">06</div>
+            <div class="flow-h-label" data-i18n="flow6">テスト</div>
+            <span class="flow-h-tag ai" data-i18n="tag_ai">AI</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker ai">07</div>
+            <div class="flow-h-label" data-i18n="flow7">セキュリティスキャン</div>
+            <span class="flow-h-tag ai" data-i18n="tag_ai">AI</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker both">08</div>
+            <div class="flow-h-label" data-i18n="flow8">デプロイ</div>
+            <span class="flow-h-tag both" data-i18n="tag_both">AI-H</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker ai">09</div>
+            <div class="flow-h-label" data-i18n="flow9">モニタリング</div>
+            <span class="flow-h-tag ai" data-i18n="tag_ai">AI</span>
+          </div>
+          <div class="flow-h-step">
+            <div class="flow-h-marker both">10</div>
+            <div class="flow-h-label" data-i18n="flow10">継続的改善</div>
+            <span class="flow-h-tag both" data-i18n="tag_both">AI-H</span>
+          </div>
+        </div>
       </div>
       <div class="lifecycle-legend">
-        <span class="legend-item"><span class="legend-dot legend-ai"></span><span data-i18n="legend_ai">AIが関与</span></span>
-        <span class="legend-item"><span class="legend-dot legend-human"></span><span data-i18n="legend_human">人によるレビュー済み</span></span>
+        <span class="legend-item"><span class="legend-dot legend-ai"></span><span data-i18n="legend_ai_tag">AI</span></span>
+        <span class="legend-item"><span class="legend-dot legend-human"></span><span data-i18n="legend_human_tag">Human</span></span>
+        <span class="legend-item"><span class="legend-dot legend-both"></span><span data-i18n="legend_both_tag">AI-H</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-eyebrow" data-i18n="why_eyebrow">WHY CS FARM</div>
+      <h2 class="sec-title" data-i18n="why_title">なぜCS Farmが選ばれるのか</h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <h3 data-i18n="why1_title">圧倒的なスピード</h3>
+        <ul>
+          <li data-i18n="why1_b1">AI協働開発</li>
+          <li data-i18n="why1_b2">開発スピード30〜50%向上</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡</div>
+        <h3 data-i18n="why2_title">人による品質保証</h3>
+        <ul>
+          <li data-i18n="why2_b1">AIの出力は必ずレビュー</li>
+          <li data-i18n="why2_b2">シニアエンジニアが承認</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔒</div>
+        <h3 data-i18n="why3_title">エンタープライズセキュリティ</h3>
+        <ul>
+          <li data-i18n="why3_b1">オンプレミス対応</li>
+          <li data-i18n="why3_b2">プライベートクラウド</li>
+          <li data-i18n="why3_b3">データ主権</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔄</div>
+        <h3 data-i18n="why4_title">長期的なパートナーシップ</h3>
+        <ul>
+          <li data-i18n="why4_b1">構築</li>
+          <li data-i18n="why4_b2">改善</li>
+          <li data-i18n="why4_b3">運用</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -510,28 +557,28 @@
     </div>
     <div class="service-grid reveal">
       <div class="service-card">
-        <h3 data-i18n="svc1_title">Webアプリケーション開発</h3>
-        <p data-i18n="svc1_desc">業務システムから顧客向けサービスまで、要件定義からAI活用により迅速に構築します。</p>
-      </div>
-      <div class="service-card">
-        <h3 data-i18n="svc2_title">MVP・プロトタイプ開発</h3>
-        <p data-i18n="svc2_desc">新規事業のアイデアを、AIによる高速プロトタイピングで数週間単位で検証可能な形にします。</p>
-      </div>
-      <div class="service-card">
         <h3 data-i18n="svc3_title">既存システムのモダナイズ</h3>
         <p data-i18n="svc3_desc">レガシーシステムの仕様をAIが解析し、安全に段階的な刷新を進めます。</p>
       </div>
       <div class="service-card">
-        <h3 data-i18n="svc4_title">モバイルアプリ開発</h3>
-        <p data-i18n="svc4_desc">iOS/Android双方に対応したアプリを、AI協働開発体制で効率的に提供します。</p>
+        <h3 data-i18n="svc1_title">Webアプリケーション開発</h3>
+        <p data-i18n="svc1_desc">業務システムから顧客向けサービスまで、要件定義からAI活用により迅速に構築します。</p>
+      </div>
+      <div class="service-card">
+        <h3 data-i18n="svc6_title">AIエージェント開発</h3>
+        <p data-i18n="svc6_desc">問い合わせ対応や社内業務のような定型タスクを自動化するAIエージェントを構築します。エージェントには業務知識やルールを個別に組み込みますが、基盤となるAIモデル自体を再学習することはありません。</p>
       </div>
       <div class="service-card">
         <h3 data-i18n="svc5_title">オンプレミス／プライベートクラウド構築</h3>
         <p data-i18n="svc5_desc">データを社外のパブリッククラウドに置けない事業者様向けに、自社データセンターやプライベート環境でのシステム構築・運用に対応します。</p>
       </div>
       <div class="service-card">
-        <h3 data-i18n="svc6_title">AIエージェント開発</h3>
-        <p data-i18n="svc6_desc">問い合わせ対応や社内業務のような定型タスクを自動化するAIエージェントを構築します。エージェントには業務知識やルールを個別に組み込みますが、基盤となるAIモデル自体を再学習することはありません。</p>
+        <h3 data-i18n="svc4_title">モバイルアプリ開発</h3>
+        <p data-i18n="svc4_desc">iOS/Android双方に対応したアプリを、AI協働開発体制で効率的に提供します。</p>
+      </div>
+      <div class="service-card">
+        <h3 data-i18n="svc2_title">MVP・プロトタイプ開発</h3>
+        <p data-i18n="svc2_desc">新規事業のアイデアを、AIによる高速プロトタイピングで数週間単位で検証可能な形にします。</p>
       </div>
     </div>
 
@@ -661,16 +708,60 @@
     <div class="sec-head reveal">
       <div class="sec-eyebrow">TECHNOLOGY</div>
       <h2 class="sec-title" data-i18n="tech_title">使用技術</h2>
+      <p class="sec-desc" data-i18n="tech_desc">フロントエンドからAI、インフラまで、幅広い技術領域に対応しています。</p>
     </div>
-    <div class="tech-strip reveal">
-      <div class="tech-chip">Claude / LLM活用</div>
-      <div class="tech-chip">Iomete</div>
-      <div class="tech-chip">TypeScript</div>
-      <div class="tech-chip">React / Next.js</div>
-      <div class="tech-chip">Python</div>
-      <div class="tech-chip">AWS / GCP</div>
-      <div class="tech-chip">CI/CD自動化</div>
-      <div class="tech-chip">自動テスト基盤</div>
+    <div class="tech-groups reveal">
+      <div class="tech-group">
+        <div class="tech-group-title" data-i18n="tech_g_frontend">Frontend</div>
+        <div class="tech-strip">
+          <div class="tech-chip">React</div>
+          <div class="tech-chip">Next.js</div>
+          <div class="tech-chip">TypeScript</div>
+        </div>
+      </div>
+      <div class="tech-group">
+        <div class="tech-group-title" data-i18n="tech_g_backend">Backend</div>
+        <div class="tech-strip">
+          <div class="tech-chip">Node.js</div>
+          <div class="tech-chip">Python</div>
+          <div class="tech-chip">Java</div>
+        </div>
+      </div>
+      <div class="tech-group">
+        <div class="tech-group-title tech-group-title-ai" data-i18n="tech_g_ai">AI</div>
+        <div class="tech-strip">
+          <div class="tech-chip tech-chip-ai">Claude</div>
+          <div class="tech-chip tech-chip-ai">OpenAI</div>
+          <div class="tech-chip tech-chip-ai">LangGraph</div>
+          <div class="tech-chip tech-chip-ai">MCP</div>
+          <div class="tech-chip tech-chip-ai">RAG</div>
+        </div>
+      </div>
+      <div class="tech-group">
+        <div class="tech-group-title" data-i18n="tech_g_cloud">Cloud</div>
+        <div class="tech-strip">
+          <div class="tech-chip">AWS</div>
+          <div class="tech-chip">Azure</div>
+          <div class="tech-chip">GCP</div>
+          <div class="tech-chip">Kubernetes</div>
+        </div>
+      </div>
+      <div class="tech-group">
+        <div class="tech-group-title" data-i18n="tech_g_database">Database</div>
+        <div class="tech-strip">
+          <div class="tech-chip">PostgreSQL</div>
+          <div class="tech-chip">MySQL</div>
+          <div class="tech-chip">Redis</div>
+        </div>
+      </div>
+      <div class="tech-group">
+        <div class="tech-group-title" data-i18n="tech_g_other">Other</div>
+        <div class="tech-strip">
+          <div class="tech-chip">Iomete</div>
+          <div class="tech-chip" data-i18n="tech_cicd">CI/CD自動化</div>
+          <div class="tech-chip" data-i18n="tech_testing">自動テスト基盤</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -805,7 +896,7 @@
   revealEls.forEach(el=>io.observe(el));
 
   /* ---------- LANGUAGE TOGGLE ---------- */
-  const I18N = {"nav_method": {"ja": "AI駆動開発とは", "en": "What Is AI-Driven Dev"}, "nav_service": {"ja": "サービス", "en": "Services"}, "nav_process": {"ja": "プロセス", "en": "Process"}, "nav_results": {"ja": "実績", "en": "Track Record"}, "nav_company": {"ja": "会社概要", "en": "Company"}, "nav_cta": {"ja": "ご相談はこちら", "en": "Get in Touch"}, "hero_title": {"ja": "AIと共に、<em>育てる</em>開発。<br>種から、収穫まで。", "en": "Development we <em>grow</em> together with AI.<br>From seed to harvest."}, "hero_sub": {"ja": "CS Farmは、要件という種を蒔き、AIとの協働で日々育て、収穫まで伴走する開発チームです。反復のたびに、機能はより実用的に、コードはより強く育ちます。", "en": "CS Farm plants the seed of your requirements and grows them daily in partnership with AI, staying with you all the way to harvest. With every iteration, features get more practical and the code grows stronger."}, "cta_primary_1": {"ja": "まずはご相談ください", "en": "Get in Touch"}, "cta_ghost": {"ja": "CS Farmの仕組みを見る", "en": "See How CS Farm Works"}, "trust_label": {"ja": "導入企業（一部）", "en": "Selected Clients"}, "method_title": {"ja": "AI駆動開発とは、<br>「一発仕上げ」ではなく「重ね塗り」の開発です。", "en": "What AI-driven development means:<br>not one finished pass, but layer upon layer."}, "method_desc": {"ja": "CS FarmにおけるAI活用は、コードを自動生成して終わりではありません。設計・実装・検証・改善のサイクルにAIを組み込み、人の目による確認を重ねながら、種から実へと育てるように品質を深めていきます。", "en": "At CS Farm, using AI doesn't stop at auto-generating code. We build AI into the cycle of design, implementation, verification and improvement, deepening quality layer by layer, like a seed growing into fruit, with human review at every stage."}, "m1_title": {"ja": "AI支援設計", "en": "AI-Assisted Design"}, "m1_desc": {"ja": "要件をAIと共に構造化し、仕様の抜け漏れや矛盾を初期段階で洗い出します。", "en": "We structure requirements together with AI, surfacing gaps and contradictions in the spec early on."}, "m2_title": {"ja": "AI協働実装", "en": "AI-Collaborative Implementation"}, "m2_desc": {"ja": "コード生成をAIが担い、エンジニアが設計意図とビジネスロジックの正しさを検証します。", "en": "AI handles code generation while engineers verify the design intent and business logic are correct."}, "m3_title": {"ja": "継続的な磨き込み", "en": "Continuous Refinement"}, "m3_desc": {"ja": "自動テストとレビューを繰り返し、リリースまで品質を段階的に高めていきます。", "en": "We repeat automated testing and review, raising quality step by step all the way to release."}, "lifecycle_desc": {"ja": "AIは一工程だけを担うのではなく、要件定義からリリースまで開発ライフサイクル全体に継続的に伴走します。", "en": "AI doesn't own just one step. It stays with you continuously across the whole development lifecycle, from requirements to release."}, "node_req": {"ja": "要件定義", "en": "Requirements"}, "node_design": {"ja": "設計", "en": "Design"}, "node_impl": {"ja": "実装", "en": "Build"}, "node_test": {"ja": "検証", "en": "Test"}, "node_release": {"ja": "リリース", "en": "Release"}, "svc_title": {"ja": "サービス内容", "en": "Services"}, "svc_desc": {"ja": "Webアプリケーション開発から既存システムの刷新まで、AI駆動のアプローチで対応します。", "en": "From web application development to modernizing existing systems, we take an AI-driven approach across the board."}, "svc1_title": {"ja": "Webアプリケーション開発", "en": "Web Application Development"}, "svc1_desc": {"ja": "業務システムから顧客向けサービスまで、要件定義からAI活用により迅速に構築します。", "en": "From internal business systems to customer-facing services, we build quickly from requirements onward using AI."}, "svc2_title": {"ja": "MVP・プロトタイプ開発", "en": "MVP & Prototype Development"}, "svc2_desc": {"ja": "新規事業のアイデアを、AIによる高速プロトタイピングで数週間単位で検証可能な形にします。", "en": "We turn new business ideas into something you can validate within weeks, through AI-powered rapid prototyping."}, "svc3_title": {"ja": "既存システムのモダナイズ", "en": "Legacy System Modernization"}, "svc3_desc": {"ja": "レガシーシステムの仕様をAIが解析し、安全に段階的な刷新を進めます。", "en": "AI analyzes the specs of legacy systems, enabling safe, phased modernization."}, "svc4_title": {"ja": "モバイルアプリ開発", "en": "Mobile App Development"}, "svc4_desc": {"ja": "iOS/Android双方に対応したアプリを、AI協働開発体制で効率的に提供します。", "en": "We deliver apps for both iOS and Android efficiently, using an AI-collaborative development setup."}, "svc5_title": {"ja": "オンプレミス／プライベートクラウド構築", "en": "On-Premises / Private Cloud Deployment"}, "svc5_desc": {"ja": "データを社外のパブリッククラウドに置けない事業者様向けに、自社データセンターやプライベート環境でのシステム構築・運用に対応します。", "en": "For organizations that can't put data on an external public cloud, we build and run systems in your own data center or private environment."}, "process_title": {"ja": "開発プロセス — 種をまく、育てる、収穫する", "en": "Development Process — Sow, Grow, Harvest"}, "process_desc": {"ja": "農の営みになぞらえた、3段階のご提供フローです。", "en": "A three-stage flow modeled on the rhythm of farming."}, "step1_kanji": {"ja": "種をまく", "en": "Sow"}, "step1_title": {"ja": "ヒアリング・要件整理", "en": "Discovery & Requirements"}, "step1_desc": {"ja": "現状の課題とゴールをお伺いし、AIと共に要件を構造化。プロジェクトの土台を作ります。", "en": "We hear your current challenges and goals, then structure requirements together with AI to lay the project's foundation."}, "step2_kanji": {"ja": "育てる", "en": "Grow"}, "step2_title": {"ja": "AI協働による反復開発", "en": "Iterative Development with AI"}, "step2_desc": {"ja": "短いサイクルで実装とレビューを繰り返し、都度フィードバックを反映しながら完成度を高めます。", "en": "We repeat short cycles of implementation and review, folding in feedback each time to raise completeness."}, "step3_kanji": {"ja": "収穫する", "en": "Harvest"}, "step3_title": {"ja": "検証・リリース・運用", "en": "Verification, Release & Operations"}, "step3_desc": {"ja": "自動テストと人によるQAを経てリリース。リリース後も継続的な改善をサポートします。", "en": "We release after automated testing and human QA, then support continuous improvement post-launch."}, "compare_title": {"ja": "従来型開発との比較", "en": "Comparison with Traditional Development"}, "compare_h1": {"ja": "従来型開発", "en": "Traditional Development"}, "compare_h2": {"ja": "CS Farm（AI駆動開発）", "en": "CS Farm (AI-Driven)"}, "cr1a": {"ja": "初期プロトタイプ", "en": "Initial prototype"}, "cr1b": {"ja": "4〜6週間", "en": "4–6 weeks"}, "cr1c": {"ja": "1〜2週間", "en": "1–2 weeks"}, "cr2a": {"ja": "実装スピード", "en": "Implementation speed"}, "cr2b": {"ja": "標準", "en": "Standard"}, "cr2c": {"ja": "最大2〜3倍", "en": "Up to 2–3x faster"}, "cr3a": {"ja": "品質保証体制", "en": "QA structure"}, "cr3b": {"ja": "人手中心", "en": "Manual-centric"}, "cr3c": {"ja": "AI検証＋人によるレビュー", "en": "AI verification + human review"}, "cr4a": {"ja": "仕様変更への対応", "en": "Handling spec changes"}, "cr4b": {"ja": "再見積・再調整が発生しやすい", "en": "Often needs re-quoting & rework"}, "cr4c": {"ja": "反復サイクルで柔軟に吸収", "en": "Absorbed flexibly via iteration"}, "results_title": {"ja": "実績", "en": "Track Record"}, "stat1_label": {"ja": "導入企業数", "en": "Client Companies"}, "stat2_label": {"ja": "継続契約率", "en": "Renewal Rate"}, "stat3_label": {"ja": "創業からの年数", "en": "Years in Business"}, "stat4_label": {"ja": "平均開発期間短縮", "en": "Avg. Timeline Reduction"}, "case1_tag": {"ja": "製造業 / 基幹システム刷新", "en": "Manufacturing / Core System Modernization"}, "case1_title": {"ja": "20年稼働のレガシーシステムを6ヶ月で刷新", "en": "Modernized a 20-year legacy system in 6 months"}, "case1_desc": {"ja": "AIが仕様書のない20年分のコードを解析して業務ロジックを抽出し、回帰テストを自動生成。新システムとの整合性を検証しながら安全に置き換えました。", "en": "AI analyzed 20 years of undocumented code to extract the business logic, then auto-generated a regression test suite to verify parity with the new system before we safely cut over."}, "case2_tag": {"ja": "小売業 / 新規事業MVP", "en": "Retail / New Business MVP"}, "case2_title": {"ja": "3週間でECプラットフォームのMVPを構築", "en": "Built an e-commerce MVP in 3 weeks"}, "case2_desc": {"ja": "AIが画面・API・データモデルの雛形を自動生成し、エンジニアはビジネスロジックの検証に集中。通常3ヶ月規模のMVP開発を3週間に短縮し、早期の市場検証を実現しました。", "en": "AI auto-generated the UI, API, and data model scaffolding, freeing engineers to focus on validating business logic. That cut a typically 3-month MVP build down to 3 weeks, enabling early market validation."}, "case3_tag": {"ja": "金融業 / 業務効率化", "en": "Financial Services / Operational Efficiency"}, "case3_title": {"ja": "審査業務システムの開発期間を半減", "en": "Cut a review-process system's dev time in half"}, "case3_desc": {"ja": "AIがセキュリティ要件を踏まえたテストケースを生成し、実装のたびに自動レビューを実施。厳格な要件を満たしながら、開発期間を半分に短縮しました。", "en": "AI generated test cases aligned to the security requirements and ran an automated review pass on every iteration, letting us meet strict requirements while cutting development time in half."}, "tech_title": {"ja": "使用技術", "en": "Technology"}, "qa_title": {"ja": "品質管理とセキュリティ", "en": "Quality Control & Security"}, "qa_desc": {"ja": "AIを活用するからこそ、人による確認体制と情報管理を徹底しています。", "en": "Precisely because we use AI, we enforce thorough human review and information management."}, "qa1_title": {"ja": "全工程で人によるレビューを実施", "en": "Human Review at Every Stage"}, "qa1_desc": {"ja": "AIが生成したコード・設計は、必ず経験豊富なエンジニアが確認した上で採用します。", "en": "Any code or design AI generates is always reviewed by an experienced engineer before it's adopted."}, "qa2_title": {"ja": "自動テストによる継続的な品質担保", "en": "Continuous QA via Automated Testing"}, "qa2_desc": {"ja": "単体テストから結合テストまで自動化し、変更のたびに品質を検証します。", "en": "We automate everything from unit to integration testing, verifying quality with every change."}, "qa3_title": {"ja": "情報セキュリティ管理体制", "en": "Information Security Management"}, "qa3_desc": {"ja": "お客様データの取り扱いに関する社内規程を整備し、Pマーク取得に向けた運用を行っています（取得予定）。", "en": "We maintain internal policies for handling client data and are operating toward Privacy Mark certification (pending)."}, "qa4_title": {"ja": "契約・秘密保持", "en": "Contracts & Confidentiality"}, "qa4_desc": {"ja": "NDA締結を前提としたプロジェクト運用で、ソースコード・仕様情報を厳格に管理します。", "en": "All projects run under NDA, with strict controls on source code and specification information."}, "qa5_title": {"ja": "データ主権（Data Sovereignty）への対応", "en": "Data Sovereignty"}, "qa5_desc": {"ja": "お客様のデータが国内・特定環境から外に出ないよう、保管場所とアクセス範囲を明確に管理。規制業種のお客様にも安心してご利用いただける体制を整えています。", "en": "We ensure client data never leaves the intended country or environment, with clearly defined storage locations and access boundaries, giving regulated industries confidence in using our services."}, "faq_title": {"ja": "よくある質問", "en": "FAQ"}, "faq1_q": {"ja": "AIが生成したコードの品質は信頼できますか？", "en": "Can we trust the quality of AI-generated code?"}, "faq1_a": {"ja": "すべてのAI生成コードは、経験豊富なエンジニアによるレビューを経てから採用しています。AIはあくまで開発を加速する手段であり、最終的な品質責任は弊社エンジニアが担います。", "en": "All AI-generated code is reviewed by an experienced engineer before it's adopted. AI is simply a means to accelerate development; final quality responsibility always rests with our engineers."}, "faq2_q": {"ja": "ソースコードの著作権・納品物の権利はどうなりますか？", "en": "Who owns the copyright to the source code and deliverables?"}, "faq2_a": {"ja": "原則として、契約に基づき納品物の著作権はお客様に帰属します。詳細な条件は契約時にご説明いたします。", "en": "In principle, ownership of deliverables transfers to the client under the contract. We'll walk you through the exact terms when we sign."}, "faq3_q": {"ja": "小規模なプロジェクトでも依頼できますか？", "en": "Can we request help with a small-scale project?"}, "faq3_a": {"ja": "MVP開発や部分的な機能追加など、規模を問わずご相談いただけます。まずは無料相談にてご要望をお聞かせください。", "en": "Yes — from MVP builds to small feature additions, we take on projects of any size. Start with a free consultation to tell us what you need."}, "faq4_q": {"ja": "セキュリティ要件が厳しい業界でも対応可能ですか？", "en": "Can you work with industries that have strict security requirements?"}, "faq4_a": {"ja": "金融・製造業など、厳格な情報管理が求められる業界での実績がございます。NDA締結を前提に、要件に応じた体制を構築いたします。", "en": "We have a track record in industries like finance and manufacturing that demand strict information controls. We build a setup tailored to your requirements, always under NDA."}, "company_title": {"ja": "会社概要", "en": "Company Overview"}, "co_th1": {"ja": "会社名", "en": "Company Name"}, "co_td1": {"ja": "株式会社CS Farm", "en": "CS Farm, Inc."}, "co_th2": {"ja": "代表者", "en": "Representative"}, "co_td2": {"ja": "代表取締役　松本 昇", "en": "CEO Noboru Matsumoto"}, "co_th3": {"ja": "設立", "en": "Founded"}, "co_td3": {"ja": "2018年4月", "en": "April 2018"}, "co_th4": {"ja": "資本金", "en": "Capital"}, "co_td4": {"ja": "10,000,000円", "en": "¥10,000,000"}, "co_th5": {"ja": "所在地", "en": "Address"}, "co_td5": {"ja": "〒150-0001　東京都渋谷区神宮前1-2-3 CS Farmビル5F（仮）", "en": "1-2-3 Jingumae, Shibuya-ku, Tokyo 150-0001, CS Farm Bldg. 5F (placeholder)"}, "co_th6": {"ja": "従業員数", "en": "Employees"}, "co_td6": {"ja": "42名（2026年7月現在）", "en": "42 (as of July 2026)"}, "co_th7": {"ja": "事業内容", "en": "Business"}, "co_td7": {"ja": "AI駆動型システム開発、DXコンサルティング、既存システム刷新支援", "en": "AI-driven system development, DX consulting, legacy system modernization support"}, "contact_title": {"ja": "まずは、お気軽にご相談ください。", "en": "Feel free to reach out, anytime."}, "contact_desc": {"ja": "費用や進め方など、まだ固まっていない段階でも構いません。貴社の状況をお伺いした上で、最適な進め方をご提案いたします。", "en": "It's fine if things like budget or approach aren't settled yet. We'll hear about your situation first and propose the best way forward."}, "tel_value": {"ja": "03-0000-0000（平日 10:00〜18:00）", "en": "03-0000-0000 (Weekdays 10:00–18:00 JST)"}, "addr_label": {"ja": "所在地", "en": "Address"}, "addr_value2": {"ja": "東京都渋谷区神宮前1-2-3（仮）", "en": "1-2-3 Jingumae, Shibuya-ku, Tokyo (placeholder)"}, "form_company": {"ja": "会社名", "en": "Company Name"}, "ph_company": {"ja": "株式会社サンプル", "en": "Sample Co., Ltd."}, "form_contact": {"ja": "ご担当者名", "en": "Contact Person"}, "ph_contact": {"ja": "山田 花子", "en": "Hanako Yamada"}, "form_email": {"ja": "メールアドレス", "en": "Email Address"}, "ph_email": {"ja": "you@company.co.jp", "en": "you@company.com"}, "form_message": {"ja": "ご相談内容", "en": "Message"}, "ph_message": {"ja": "開発したいシステムの概要やお悩みをご記入ください", "en": "Tell us about the system you'd like to build or the challenge you're facing"}, "submit_btn": {"ja": "この内容で送信する", "en": "Send this message"}, "footer_privacy": {"ja": "プライバシーポリシー", "en": "Privacy Policy"}, "footer_terms": {"ja": "利用規約", "en": "Terms of Use"}, "footer_law": {"ja": "特定商取引法に基づく表記", "en": "Legal Notice"}, "footer_sitemap": {"ja": "サイトマップ", "en": "Sitemap"}, "legend_ai": {"ja": "AIが関与", "en": "AI-assisted"}, "legend_human": {"ja": "人によるレビュー済み", "en": "Human-reviewed"}, "svc6_title": {"ja": "AIエージェント開発", "en": "AI Agent Development"}, "svc6_desc": {"ja": "問い合わせ対応や社内業務のような定型タスクを自動化するAIエージェントを構築します。エージェントには業務知識やルールを個別に組み込みますが、基盤となるAIモデル自体を再学習することはありません。", "en": "We build AI agents that automate routine tasks like customer inquiries and internal operations. We configure each agent with your business knowledge and rules, but we never retrain the underlying AI model itself."}, "qa6_title": {"ja": "モデルの再学習は行いません", "en": "We Don't Retrain the Model"}, "qa6_desc": {"ja": "お客様のデータやコードを使ってAIモデル自体を再学習・ファインチューニングすることはありません。エージェントに業務知識やルールを個別に「教える」形で対応しており、モデル本体は変更されません。", "en": "We never use your data or code to retrain or fine-tune the underlying AI model. Instead, we \"teach\" each agent your business knowledge and rules individually — the model itself is never altered."}, "nav_expertise": {"ja": "専門分野", "en": "Expertise"}, "expertise_eyebrow": {"ja": "EXPERTISE", "en": "EXPERTISE"}, "expertise_title": {"ja": "専門分野", "en": "Areas of Expertise"}, "expertise_desc": {"ja": "上記の開発サービスに加え、ハードウェアと組み合わせた領域や人材提供でも強みを持っています。", "en": "Beyond the development services above, we also bring strength in hardware-adjacent domains and contract staffing."}, "exp1_title": {"ja": "ロボティクス", "en": "Robotics"}, "exp1_desc": {"ja": "産業用ロボットや自律移動ロボットの制御ソフトウェア開発に対応します。", "en": "We develop control software for industrial robots and autonomous mobile robots."}, "exp2_title": {"ja": "SLAM（自己位置推定・地図生成）", "en": "SLAM (Localization & Mapping)"}, "exp2_desc": {"ja": "自律移動体向けのSLAM技術を活用し、センサーデータからの環境認識・自己位置推定を実装します。", "en": "We implement SLAM for autonomous mobile systems, turning sensor data into environment recognition and self-localization."}, "exp3_title": {"ja": "IoTシステム開発", "en": "IoT System Development"}, "exp3_desc": {"ja": "センサーからのデータ収集・通信からクラウド連携まで、IoTシステムを一気通貫で構築します。", "en": "From sensor data collection and connectivity through to cloud integration, we build IoT systems end to end."}, "exp4_title": {"ja": "人材提供（契約ベース）", "en": "Contract Staffing"}, "exp4_desc": {"ja": "エンジニアをはじめとした人材を契約ベースでご提供します。貴社オフィスへの常駐、またはリモートでの参画など、ご要望に応じた働き方に対応します。", "en": "We provide engineers and other personnel on a contract basis. Depending on your preference, our people can work on-site at your offices or remotely."}, "exp5_title": {"ja": "ワイヤレス通信", "en": "Wireless"}, "exp5_desc": {"ja": "Bluetooth、Wi-Fi、LPWAなど各種無線通信規格を用いたデバイス・システムの開発に対応します。", "en": "We develop devices and systems using wireless standards such as Bluetooth, Wi-Fi, and LPWA."}, "exp6_title": {"ja": "建設テック", "en": "Construction Software"}, "exp6_desc": {"ja": "施工管理・BIM連携・現場のデジタル化・安全衛生管理など、建設業界向けソフトウェアの開発実績があります。", "en": "We have a track record building software for the construction industry, including site management, BIM integration, on-site digitalization, and safety compliance management."}, "exp7_title": {"ja": "組み込みソフトウェア開発", "en": "Embedded Software Development"}, "exp7_desc": {"ja": "マイコン制御からデバイスドライバまで、ハードウェアに近い領域の組み込みソフトウェア開発に対応します。", "en": "We develop embedded software close to the hardware, from microcontroller control through device drivers."}, "exp8_title": {"ja": "ヘルステック・エコシステム構築", "en": "Health Tech Ecosystem"}, "exp8_desc": {"ja": "ヘルステック企業様と1年以上にわたりパートナーシップを継続し、アプリ・デバイス・データ基盤をつなぐエコシステムの構築に伴走しています。", "en": "We've partnered with a health tech company for over a year now, working alongside them to build an ecosystem connecting their apps, devices, and underlying data platform."}, "case4_tag": {"ja": "自社プロダクト / AIエージェント基盤", "en": "In-House Product / AI Agent Platform"}, "case4_title": {"ja": "自社開発のAIエージェントで、タスク管理とレポート作成を自動化", "en": "Built our own AI agents to automate task management and report generation"}, "case4_desc": {"ja": "自社プロダクトとして、日々のタスク管理や定型レポート生成を担うAIエージェントを開発・運用。実際に自社の業務で使い倒すことで、お客様に提供する品質を磨き続けています。", "en": "As an in-house product, we've built and run AI agents that handle day-to-day task management and routine report generation. Using them ourselves every day is how we keep sharpening the quality we bring to clients."}};
+  const I18N = {"nav_method": {"ja": "AI駆動開発とは", "en": "What Is AI-Driven Dev"}, "nav_service": {"ja": "サービス", "en": "Services"}, "nav_process": {"ja": "プロセス", "en": "Process"}, "nav_results": {"ja": "実績", "en": "Track Record"}, "nav_company": {"ja": "会社概要", "en": "Company"}, "nav_cta": {"ja": "ご相談はこちら", "en": "Get in Touch"}, "hero_title": {"ja": "AI駆動開発で、開発速度と品質を<em>両立</em>。", "en": "AI-driven development that delivers <em>both</em> speed and quality."}, "hero_sub": {"ja": "人とAIが協働し、要件定義から運用まで伴走します。", "en": "Humans and AI work together, staying with you from requirements through operations."}, "cta_primary_1": {"ja": "まずはご相談ください", "en": "Get in Touch"}, "cta_ghost": {"ja": "CS Farmの仕組みを見る", "en": "See How CS Farm Works"}, "trust_label": {"ja": "導入企業（一部）", "en": "Selected Clients"}, "method_title": {"ja": "AI駆動開発とは、<br>「一発仕上げ」ではなく「重ね塗り」の開発です。", "en": "What AI-driven development means:<br>not one finished pass, but layer upon layer."}, "method_desc": {"ja": "CS FarmにおけるAI活用は、コードを自動生成して終わりではありません。設計・実装・検証・改善のサイクルにAIを組み込み、人の目による確認を重ねながら、種から実へと育てるように品質を深めていきます。", "en": "At CS Farm, using AI doesn't stop at auto-generating code. We build AI into the cycle of design, implementation, verification and improvement, deepening quality layer by layer, like a seed growing into fruit, with human review at every stage."}, "m1_title": {"ja": "AI支援設計", "en": "AI-Assisted Design"}, "m1_desc": {"ja": "要件をAIと共に構造化し、仕様の抜け漏れや矛盾を初期段階で洗い出します。", "en": "We structure requirements together with AI, surfacing gaps and contradictions in the spec early on."}, "m2_title": {"ja": "AI協働実装", "en": "AI-Collaborative Implementation"}, "m2_desc": {"ja": "コード生成をAIが担い、エンジニアが設計意図とビジネスロジックの正しさを検証します。", "en": "AI handles code generation while engineers verify the design intent and business logic are correct."}, "m3_title": {"ja": "継続的な磨き込み", "en": "Continuous Refinement"}, "m3_desc": {"ja": "自動テストとレビューを繰り返し、リリースまで品質を段階的に高めていきます。", "en": "We repeat automated testing and review, raising quality step by step all the way to release."}, "lifecycle_desc": {"ja": "AIは一工程だけを担うのではなく、要件定義からリリース後の改善まで開発ライフサイクル全体に継続的に伴走します。", "en": "AI doesn't own just one step. It stays with you continuously across the whole development lifecycle, from requirements through post-release improvement."}, "node_req": {"ja": "要件定義", "en": "Requirements"}, "node_design": {"ja": "設計", "en": "Design"}, "node_impl": {"ja": "実装", "en": "Build"}, "node_test": {"ja": "検証", "en": "Test"}, "node_release": {"ja": "リリース", "en": "Release"}, "svc_title": {"ja": "サービス内容", "en": "Services"}, "svc_desc": {"ja": "Webアプリケーション開発から既存システムの刷新まで、AI駆動のアプローチで対応します。", "en": "From web application development to modernizing existing systems, we take an AI-driven approach across the board."}, "svc1_title": {"ja": "Webアプリケーション開発", "en": "Web Application Development"}, "svc1_desc": {"ja": "業務システムから顧客向けサービスまで、要件定義からAI活用により迅速に構築します。", "en": "From internal business systems to customer-facing services, we build quickly from requirements onward using AI."}, "svc2_title": {"ja": "MVP・プロトタイプ開発", "en": "MVP & Prototype Development"}, "svc2_desc": {"ja": "新規事業のアイデアを、AIによる高速プロトタイピングで数週間単位で検証可能な形にします。", "en": "We turn new business ideas into something you can validate within weeks, through AI-powered rapid prototyping."}, "svc3_title": {"ja": "既存システムのモダナイズ", "en": "Legacy System Modernization"}, "svc3_desc": {"ja": "レガシーシステムの仕様をAIが解析し、安全に段階的な刷新を進めます。", "en": "AI analyzes the specs of legacy systems, enabling safe, phased modernization."}, "svc4_title": {"ja": "モバイルアプリ開発", "en": "Mobile App Development"}, "svc4_desc": {"ja": "iOS/Android双方に対応したアプリを、AI協働開発体制で効率的に提供します。", "en": "We deliver apps for both iOS and Android efficiently, using an AI-collaborative development setup."}, "svc5_title": {"ja": "オンプレミス／プライベートクラウド構築", "en": "On-Premises / Private Cloud Deployment"}, "svc5_desc": {"ja": "データを社外のパブリッククラウドに置けない事業者様向けに、自社データセンターやプライベート環境でのシステム構築・運用に対応します。", "en": "For organizations that can't put data on an external public cloud, we build and run systems in your own data center or private environment."}, "process_title": {"ja": "開発プロセス — 種をまく、育てる、収穫する", "en": "Development Process — Sow, Grow, Harvest"}, "process_desc": {"ja": "農の営みになぞらえた、3段階のご提供フローです。", "en": "A three-stage flow modeled on the rhythm of farming."}, "step1_kanji": {"ja": "種をまく", "en": "Sow"}, "step1_title": {"ja": "ヒアリング・要件整理", "en": "Discovery & Requirements"}, "step1_desc": {"ja": "現状の課題とゴールをお伺いし、AIと共に要件を構造化。プロジェクトの土台を作ります。", "en": "We hear your current challenges and goals, then structure requirements together with AI to lay the project's foundation."}, "step2_kanji": {"ja": "育てる", "en": "Grow"}, "step2_title": {"ja": "AI協働による反復開発", "en": "Iterative Development with AI"}, "step2_desc": {"ja": "短いサイクルで実装とレビューを繰り返し、都度フィードバックを反映しながら完成度を高めます。", "en": "We repeat short cycles of implementation and review, folding in feedback each time to raise completeness."}, "step3_kanji": {"ja": "収穫する", "en": "Harvest"}, "step3_title": {"ja": "検証・リリース・運用", "en": "Verification, Release & Operations"}, "step3_desc": {"ja": "自動テストと人によるQAを経てリリース。リリース後も継続的な改善をサポートします。", "en": "We release after automated testing and human QA, then support continuous improvement post-launch."}, "compare_title": {"ja": "従来型開発との比較", "en": "Comparison with Traditional Development"}, "compare_h1": {"ja": "従来型開発", "en": "Traditional Development"}, "compare_h2": {"ja": "CS Farm（AI駆動開発）", "en": "CS Farm (AI-Driven)"}, "cr1a": {"ja": "初期プロトタイプ", "en": "Initial prototype"}, "cr1b": {"ja": "4〜6週間", "en": "4–6 weeks"}, "cr1c": {"ja": "1〜2週間", "en": "1–2 weeks"}, "cr2a": {"ja": "実装スピード", "en": "Implementation speed"}, "cr2b": {"ja": "標準", "en": "Standard"}, "cr2c": {"ja": "最大2〜3倍", "en": "Up to 2–3x faster"}, "cr3a": {"ja": "品質保証体制", "en": "QA structure"}, "cr3b": {"ja": "人手中心", "en": "Manual-centric"}, "cr3c": {"ja": "AI検証＋人によるレビュー", "en": "AI verification + human review"}, "cr4a": {"ja": "仕様変更への対応", "en": "Handling spec changes"}, "cr4b": {"ja": "再見積・再調整が発生しやすい", "en": "Often needs re-quoting & rework"}, "cr4c": {"ja": "反復サイクルで柔軟に吸収", "en": "Absorbed flexibly via iteration"}, "results_title": {"ja": "実績", "en": "Track Record"}, "stat1_label": {"ja": "導入企業数", "en": "Client Companies"}, "stat2_label": {"ja": "継続契約率", "en": "Renewal Rate"}, "stat3_label": {"ja": "創業からの年数", "en": "Years in Business"}, "stat4_label": {"ja": "平均開発期間短縮", "en": "Avg. Timeline Reduction"}, "case1_tag": {"ja": "製造業 / 基幹システム刷新", "en": "Manufacturing / Core System Modernization"}, "case1_title": {"ja": "20年稼働のレガシーシステムを6ヶ月で刷新", "en": "Modernized a 20-year legacy system in 6 months"}, "case1_desc": {"ja": "AIが仕様書のない20年分のコードを解析して業務ロジックを抽出し、回帰テストを自動生成。新システムとの整合性を検証しながら安全に置き換えました。", "en": "AI analyzed 20 years of undocumented code to extract the business logic, then auto-generated a regression test suite to verify parity with the new system before we safely cut over."}, "case2_tag": {"ja": "小売業 / 新規事業MVP", "en": "Retail / New Business MVP"}, "case2_title": {"ja": "3週間でECプラットフォームのMVPを構築", "en": "Built an e-commerce MVP in 3 weeks"}, "case2_desc": {"ja": "AIが画面・API・データモデルの雛形を自動生成し、エンジニアはビジネスロジックの検証に集中。通常3ヶ月規模のMVP開発を3週間に短縮し、早期の市場検証を実現しました。", "en": "AI auto-generated the UI, API, and data model scaffolding, freeing engineers to focus on validating business logic. That cut a typically 3-month MVP build down to 3 weeks, enabling early market validation."}, "case3_tag": {"ja": "金融業 / 業務効率化", "en": "Financial Services / Operational Efficiency"}, "case3_title": {"ja": "審査業務システムの開発期間を半減", "en": "Cut a review-process system's dev time in half"}, "case3_desc": {"ja": "AIがセキュリティ要件を踏まえたテストケースを生成し、実装のたびに自動レビューを実施。厳格な要件を満たしながら、開発期間を半分に短縮しました。", "en": "AI generated test cases aligned to the security requirements and ran an automated review pass on every iteration, letting us meet strict requirements while cutting development time in half."}, "tech_title": {"ja": "使用技術", "en": "Technology"}, "qa_title": {"ja": "品質管理とセキュリティ", "en": "Quality Control & Security"}, "qa_desc": {"ja": "AIを活用するからこそ、人による確認体制と情報管理を徹底しています。", "en": "Precisely because we use AI, we enforce thorough human review and information management."}, "qa1_title": {"ja": "全工程で人によるレビューを実施", "en": "Human Review at Every Stage"}, "qa1_desc": {"ja": "AIが生成したコード・設計は、必ず経験豊富なエンジニアが確認した上で採用します。", "en": "Any code or design AI generates is always reviewed by an experienced engineer before it's adopted."}, "qa2_title": {"ja": "自動テストによる継続的な品質担保", "en": "Continuous QA via Automated Testing"}, "qa2_desc": {"ja": "単体テストから結合テストまで自動化し、変更のたびに品質を検証します。", "en": "We automate everything from unit to integration testing, verifying quality with every change."}, "qa3_title": {"ja": "情報セキュリティ管理体制", "en": "Information Security Management"}, "qa3_desc": {"ja": "お客様データの取り扱いに関する社内規程を整備し、Pマーク取得に向けた運用を行っています（取得予定）。", "en": "We maintain internal policies for handling client data and are operating toward Privacy Mark certification (pending)."}, "qa4_title": {"ja": "契約・秘密保持", "en": "Contracts & Confidentiality"}, "qa4_desc": {"ja": "NDA締結を前提としたプロジェクト運用で、ソースコード・仕様情報を厳格に管理します。", "en": "All projects run under NDA, with strict controls on source code and specification information."}, "qa5_title": {"ja": "データ主権（Data Sovereignty）への対応", "en": "Data Sovereignty"}, "qa5_desc": {"ja": "お客様のデータが国内・特定環境から外に出ないよう、保管場所とアクセス範囲を明確に管理。規制業種のお客様にも安心してご利用いただける体制を整えています。", "en": "We ensure client data never leaves the intended country or environment, with clearly defined storage locations and access boundaries, giving regulated industries confidence in using our services."}, "faq_title": {"ja": "よくある質問", "en": "FAQ"}, "faq1_q": {"ja": "AIが生成したコードの品質は信頼できますか？", "en": "Can we trust the quality of AI-generated code?"}, "faq1_a": {"ja": "すべてのAI生成コードは、経験豊富なエンジニアによるレビューを経てから採用しています。AIはあくまで開発を加速する手段であり、最終的な品質責任は弊社エンジニアが担います。", "en": "All AI-generated code is reviewed by an experienced engineer before it's adopted. AI is simply a means to accelerate development; final quality responsibility always rests with our engineers."}, "faq2_q": {"ja": "ソースコードの著作権・納品物の権利はどうなりますか？", "en": "Who owns the copyright to the source code and deliverables?"}, "faq2_a": {"ja": "原則として、契約に基づき納品物の著作権はお客様に帰属します。詳細な条件は契約時にご説明いたします。", "en": "In principle, ownership of deliverables transfers to the client under the contract. We'll walk you through the exact terms when we sign."}, "faq3_q": {"ja": "小規模なプロジェクトでも依頼できますか？", "en": "Can we request help with a small-scale project?"}, "faq3_a": {"ja": "MVP開発や部分的な機能追加など、規模を問わずご相談いただけます。まずは無料相談にてご要望をお聞かせください。", "en": "Yes — from MVP builds to small feature additions, we take on projects of any size. Start with a free consultation to tell us what you need."}, "faq4_q": {"ja": "セキュリティ要件が厳しい業界でも対応可能ですか？", "en": "Can you work with industries that have strict security requirements?"}, "faq4_a": {"ja": "金融・製造業など、厳格な情報管理が求められる業界での実績がございます。NDA締結を前提に、要件に応じた体制を構築いたします。", "en": "We have a track record in industries like finance and manufacturing that demand strict information controls. We build a setup tailored to your requirements, always under NDA."}, "company_title": {"ja": "会社概要", "en": "Company Overview"}, "co_th1": {"ja": "会社名", "en": "Company Name"}, "co_td1": {"ja": "株式会社CS Farm", "en": "CS Farm, Inc."}, "co_th2": {"ja": "代表者", "en": "Representative"}, "co_td2": {"ja": "代表取締役　松本 昇", "en": "CEO Noboru Matsumoto"}, "co_th3": {"ja": "設立", "en": "Founded"}, "co_td3": {"ja": "2018年4月", "en": "April 2018"}, "co_th4": {"ja": "資本金", "en": "Capital"}, "co_td4": {"ja": "10,000,000円", "en": "¥10,000,000"}, "co_th5": {"ja": "所在地", "en": "Address"}, "co_td5": {"ja": "〒150-0001　東京都渋谷区神宮前1-2-3 CS Farmビル5F（仮）", "en": "1-2-3 Jingumae, Shibuya-ku, Tokyo 150-0001, CS Farm Bldg. 5F (placeholder)"}, "co_th6": {"ja": "従業員数", "en": "Employees"}, "co_td6": {"ja": "42名（2026年7月現在）", "en": "42 (as of July 2026)"}, "co_th7": {"ja": "事業内容", "en": "Business"}, "co_td7": {"ja": "AI駆動型システム開発、DXコンサルティング、既存システム刷新支援", "en": "AI-driven system development, DX consulting, legacy system modernization support"}, "contact_title": {"ja": "まずは、お気軽にご相談ください。", "en": "Feel free to reach out, anytime."}, "contact_desc": {"ja": "費用や進め方など、まだ固まっていない段階でも構いません。貴社の状況をお伺いした上で、最適な進め方をご提案いたします。", "en": "It's fine if things like budget or approach aren't settled yet. We'll hear about your situation first and propose the best way forward."}, "tel_value": {"ja": "03-0000-0000（平日 10:00〜18:00）", "en": "03-0000-0000 (Weekdays 10:00–18:00 JST)"}, "addr_label": {"ja": "所在地", "en": "Address"}, "addr_value2": {"ja": "東京都渋谷区神宮前1-2-3（仮）", "en": "1-2-3 Jingumae, Shibuya-ku, Tokyo (placeholder)"}, "form_company": {"ja": "会社名", "en": "Company Name"}, "ph_company": {"ja": "株式会社サンプル", "en": "Sample Co., Ltd."}, "form_contact": {"ja": "ご担当者名", "en": "Contact Person"}, "ph_contact": {"ja": "山田 花子", "en": "Hanako Yamada"}, "form_email": {"ja": "メールアドレス", "en": "Email Address"}, "ph_email": {"ja": "you@company.co.jp", "en": "you@company.com"}, "form_message": {"ja": "ご相談内容", "en": "Message"}, "ph_message": {"ja": "開発したいシステムの概要やお悩みをご記入ください", "en": "Tell us about the system you'd like to build or the challenge you're facing"}, "submit_btn": {"ja": "この内容で送信する", "en": "Send this message"}, "footer_privacy": {"ja": "プライバシーポリシー", "en": "Privacy Policy"}, "footer_terms": {"ja": "利用規約", "en": "Terms of Use"}, "footer_law": {"ja": "特定商取引法に基づく表記", "en": "Legal Notice"}, "footer_sitemap": {"ja": "サイトマップ", "en": "Sitemap"}, "legend_ai": {"ja": "AIが関与", "en": "AI-assisted"}, "legend_human": {"ja": "人によるレビュー済み", "en": "Human-reviewed"}, "svc6_title": {"ja": "AIエージェント開発", "en": "AI Agent Development"}, "svc6_desc": {"ja": "問い合わせ対応や社内業務のような定型タスクを自動化するAIエージェントを構築します。エージェントには業務知識やルールを個別に組み込みますが、基盤となるAIモデル自体を再学習することはありません。", "en": "We build AI agents that automate routine tasks like customer inquiries and internal operations. We configure each agent with your business knowledge and rules, but we never retrain the underlying AI model itself."}, "qa6_title": {"ja": "モデルの再学習は行いません", "en": "We Don't Retrain the Model"}, "qa6_desc": {"ja": "お客様のデータやコードを使ってAIモデル自体を再学習・ファインチューニングすることはありません。エージェントに業務知識やルールを個別に「教える」形で対応しており、モデル本体は変更されません。", "en": "We never use your data or code to retrain or fine-tune the underlying AI model. Instead, we \"teach\" each agent your business knowledge and rules individually — the model itself is never altered."}, "nav_expertise": {"ja": "専門分野", "en": "Expertise"}, "expertise_eyebrow": {"ja": "EXPERTISE", "en": "EXPERTISE"}, "expertise_title": {"ja": "専門分野", "en": "Areas of Expertise"}, "expertise_desc": {"ja": "上記の開発サービスに加え、ハードウェアと組み合わせた領域や人材提供でも強みを持っています。", "en": "Beyond the development services above, we also bring strength in hardware-adjacent domains and contract staffing."}, "exp1_title": {"ja": "ロボティクス", "en": "Robotics"}, "exp1_desc": {"ja": "産業用ロボットや自律移動ロボットの制御ソフトウェア開発に対応します。", "en": "We develop control software for industrial robots and autonomous mobile robots."}, "exp2_title": {"ja": "SLAM（自己位置推定・地図生成）", "en": "SLAM (Localization & Mapping)"}, "exp2_desc": {"ja": "自律移動体向けのSLAM技術を活用し、センサーデータからの環境認識・自己位置推定を実装します。", "en": "We implement SLAM for autonomous mobile systems, turning sensor data into environment recognition and self-localization."}, "exp3_title": {"ja": "IoTシステム開発", "en": "IoT System Development"}, "exp3_desc": {"ja": "センサーからのデータ収集・通信からクラウド連携まで、IoTシステムを一気通貫で構築します。", "en": "From sensor data collection and connectivity through to cloud integration, we build IoT systems end to end."}, "exp4_title": {"ja": "人材提供（契約ベース）", "en": "Contract Staffing"}, "exp4_desc": {"ja": "エンジニアをはじめとした人材を契約ベースでご提供します。貴社オフィスへの常駐、またはリモートでの参画など、ご要望に応じた働き方に対応します。", "en": "We provide engineers and other personnel on a contract basis. Depending on your preference, our people can work on-site at your offices or remotely."}, "exp5_title": {"ja": "ワイヤレス通信", "en": "Wireless"}, "exp5_desc": {"ja": "Bluetooth、Wi-Fi、LPWAなど各種無線通信規格を用いたデバイス・システムの開発に対応します。", "en": "We develop devices and systems using wireless standards such as Bluetooth, Wi-Fi, and LPWA."}, "exp6_title": {"ja": "建設テック", "en": "Construction Software"}, "exp6_desc": {"ja": "施工管理・BIM連携・現場のデジタル化・安全衛生管理など、建設業界向けソフトウェアの開発実績があります。", "en": "We have a track record building software for the construction industry, including site management, BIM integration, on-site digitalization, and safety compliance management."}, "exp7_title": {"ja": "組み込みソフトウェア開発", "en": "Embedded Software Development"}, "exp7_desc": {"ja": "マイコン制御からデバイスドライバまで、ハードウェアに近い領域の組み込みソフトウェア開発に対応します。", "en": "We develop embedded software close to the hardware, from microcontroller control through device drivers."}, "exp8_title": {"ja": "ヘルステック・エコシステム構築", "en": "Health Tech Ecosystem"}, "exp8_desc": {"ja": "ヘルステック企業様と1年以上にわたりパートナーシップを継続し、アプリ・デバイス・データ基盤をつなぐエコシステムの構築に伴走しています。", "en": "We've partnered with a health tech company for over a year now, working alongside them to build an ecosystem connecting their apps, devices, and underlying data platform."}, "case4_tag": {"ja": "自社プロダクト / AIエージェント基盤", "en": "In-House Product / AI Agent Platform"}, "case4_title": {"ja": "自社開発のAIエージェントで、タスク管理とレポート作成を自動化", "en": "Built our own AI agents to automate task management and report generation"}, "case4_desc": {"ja": "自社プロダクトとして、日々のタスク管理や定型レポート生成を担うAIエージェントを開発・運用。実際に自社の業務で使い倒すことで、お客様に提供する品質を磨き続けています。", "en": "As an in-house product, we've built and run AI agents that handle day-to-day task management and routine report generation. Using them ourselves every day is how we keep sharpening the quality we bring to clients."}, "tech_desc": {"ja": "フロントエンドからAI、インフラまで、幅広い技術領域に対応しています。", "en": "From frontend to AI to infrastructure, we work across a broad range of technologies."}, "tech_g_frontend": {"ja": "Frontend", "en": "Frontend"}, "tech_g_backend": {"ja": "Backend", "en": "Backend"}, "tech_g_ai": {"ja": "AI", "en": "AI"}, "tech_g_cloud": {"ja": "Cloud", "en": "Cloud"}, "tech_g_database": {"ja": "Database", "en": "Database"}, "tech_g_other": {"ja": "Other", "en": "Other"}, "tech_cicd": {"ja": "CI/CD自動化", "en": "CI/CD Automation"}, "tech_testing": {"ja": "自動テスト基盤", "en": "Automated Test Infrastructure"}, "why_eyebrow": {"ja": "WHY CS FARM", "en": "WHY CS FARM"}, "why_title": {"ja": "なぜCS Farmが選ばれるのか", "en": "Why Companies Choose CS Farm"}, "why1_title": {"ja": "圧倒的なスピード", "en": "Faster Delivery"}, "why1_b1": {"ja": "AI協働開発", "en": "AI-assisted development"}, "why1_b2": {"ja": "開発スピード30〜50%向上", "en": "30–50% faster delivery"}, "why2_title": {"ja": "人による品質保証", "en": "Human Quality"}, "why2_b1": {"ja": "AIの出力は必ずレビュー", "en": "Every AI output reviewed"}, "why2_b2": {"ja": "シニアエンジニアが承認", "en": "Senior engineer approval"}, "why3_title": {"ja": "エンタープライズセキュリティ", "en": "Enterprise Security"}, "why3_b1": {"ja": "オンプレミス対応", "en": "On-prem"}, "why3_b2": {"ja": "プライベートクラウド", "en": "Private Cloud"}, "why3_b3": {"ja": "データ主権", "en": "Data sovereignty"}, "why4_title": {"ja": "長期的なパートナーシップ", "en": "Long-term Partnership"}, "why4_b1": {"ja": "構築", "en": "Build"}, "why4_b2": {"ja": "改善", "en": "Improve"}, "why4_b3": {"ja": "運用", "en": "Operate"}, "flow1": {"ja": "要件定義", "en": "Requirements"}, "flow2": {"ja": "AI分析", "en": "AI Analysis"}, "flow3": {"ja": "アーキテクチャ設計", "en": "Architecture"}, "flow4": {"ja": "AIコード生成", "en": "AI Code Generation"}, "flow5": {"ja": "人によるレビュー", "en": "Human Review"}, "flow6": {"ja": "テスト", "en": "Testing"}, "flow7": {"ja": "セキュリティスキャン", "en": "Security Scan"}, "flow8": {"ja": "デプロイ", "en": "Deployment"}, "flow9": {"ja": "モニタリング", "en": "Monitoring"}, "flow10": {"ja": "継続的改善", "en": "Continuous Improvement"}, "tag_ai": {"ja": "AI", "en": "AI"}, "tag_human": {"ja": "HUMAN", "en": "HUMAN"}, "tag_both": {"ja": "AI-H", "en": "AI-H"}, "legend_ai_tag": {"ja": "AI", "en": "AI"}, "legend_human_tag": {"ja": "人", "en": "Human"}, "legend_both_tag": {"ja": "AI-H", "en": "AI-H"}};
   let currentLang = 'ja';
 
   function applyLanguage(lang){
